@@ -1,4 +1,11 @@
-/* Paleta de cores */
+/* Reset de margens e preenchimentos padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variáveis de cores */
 :root {
     --primary-color: #007BFF;
     --secondary-color: #6C757D;
@@ -9,41 +16,152 @@
     --white-color: #ffffff;
 }
 
-/* Estilo global */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Estilos globais e base */
+html, body {
+    height: 100%;
+    font-family: Arial, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
     margin: 0;
     padding: 0;
     display: flex;
+    flex-direction: column;
     min-height: 100vh;
-    background-color: var(--background-color);
-    color: var(--text-color);
 }
 
-/* Estilos para a sidebar */
+/* --- Tela de Login --- */
+body.login-body, /* corpo com background imagem no login */
+body {
+    background-image: url('Fundo.jpg'); /* imagem fundo login */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container, .login-box {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px 30px;
+    border-radius: 10px 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    max-width: 350px;
+    width: 90%;
+    text-align: center;
+    opacity: 0.95;
+}
+
+.login-container h1, .login-box h2 {
+    font-size: 1.75rem;
+    color: #2C3E50;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.input-container, .login-form-group {
+    position: relative;
+    margin: 10px 0 20px;
+    text-align: left;
+}
+
+.input-container i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #15A8E7;
+}
+
+.input-container input,
+.login-form-group input {
+    width: 100%;
+    padding: 10px 12px 10px 40px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px 6px;
+    outline: none;
+    font-size: 1rem;
+    color: #2C3E50;
+    background-color: var(--white-color);
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.input-container input:focus,
+.login-form-group input:focus {
+    border-color: #15A8E7;
+}
+
+button, button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #15A8E7;
+    color: var(--white-color);
+    border: none;
+    border-radius: 5px 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    width: 50%;
+    max-width: 200px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 0 auto;
+    display: block;
+}
+
+button:hover, button[type="submit"]:hover {
+    background-color: #1F618D;
+    transform: translateY(-2px);
+}
+
+button:active, button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* Logo e título na tela de login */
+.logo-title-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.logo {
+    margin-right: 20px;
+}
+
+.logo img {
+    max-width: 50px;
+}
+
+/* Mensagem de erro */
+#error-message {
+    margin-bottom: 15px;
+}
+
+/* --- Sidebar --- */
 .sidebar {
+    position: fixed;
+    top: 70px; /* ajustado para barra superior */
+    left: 0;
     width: 220px;
+    height: calc(100vh - 70px);
     background-color: var(--primary-color);
     color: var(--white-color);
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding-top: 0;
     box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto;
 }
 
 .sidebar h2 {
-    text-align: center;
-    padding: 15px 0;
-    background-color: var(--primary-color);
-    margin: 0;
     width: 100%;
+    padding: 15px 0;
+    margin: 0;
     font-size: 1.5rem;
+    text-align: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: var(--primary-color);
 }
 
 .sidebar ul {
@@ -58,40 +176,87 @@ body {
 }
 
 .sidebar ul li a {
-    color: var(--white-color);
-    text-decoration: none;
     display: block;
     padding: 12px 20px;
+    color: var(--white-color);
+    text-decoration: none;
     font-size: 1rem;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
 }
 
-.sidebar ul li a:hover {
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
     background-color: var(--hover-color);
 }
 
-/* Estilo para a barra superior */
-.topbar {
-    background-color: var(--white-color);
-    color: var(--text-color);
-    padding: 15px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+/* --- Barra superior (Topbar) --- */
+.topbar, .top-bar {
     position: fixed;
     top: 0;
     left: 220px;
     right: 0;
+    height: 70px;
+    background-color: var(--white-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px 20px;
     z-index: 1000;
     border-bottom: 1px solid var(--border-color);
+    color: var(--text-color);
 }
 
-.topbar .user-info {
-    font-size: 1rem;
-    font-weight: 500;
+.top-bar {
+    background: linear-gradient(90deg, #2C3E50, #15A8E7);
+    color: #fff;
+    border-bottom: 3px solid #96D7EF;
+    height: 70px;
+    padding: 0 20px;
 }
 
+.logo-empresa {
+    display: flex;
+    align-items: center;
+}
+
+.logo-empresa img {
+    height: 60px;
+    width: auto;
+    margin-right: 15px;
+}
+
+.nome-empresa {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.usuario-info {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: inherit;
+}
+
+.usuario-info span {
+    font-weight: bold;
+    margin-right: 12px;
+    color: inherit;
+}
+
+.usuario-info button {
+    background: none;
+    border: none;
+    margin: 0 7px;
+    cursor: pointer;
+}
+
+.usuario-info i {
+    font-size: 22px;
+}
+
+/* Ícones da topbar */
 .topbar .icons {
     display: flex;
     gap: 15px;
@@ -99,346 +264,63 @@ body {
 
 .topbar .icons a {
     color: var(--text-color);
-    text-decoration: none;
     font-size: 1.25rem;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
 
 .topbar .icons a:hover {
     color: var(--primary-color);
 }
 
-/* Estilo para o conteúdo principal */
+/* --- Conteúdo principal --- */
 .content {
     margin-left: 220px;
-    margin-top: 60px;
+    margin-top: 70px;
     padding: 30px;
     width: calc(100% - 220px);
     background-color: var(--background-color);
 }
 
-.header {
-    background-color: var(--white-color);
-    padding: 20px;
-    margin-bottom: 25px;
-    border-bottom: 1px solid var(--border-color);
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.header h1 {
-    margin: 0;
-    font-size: 1.75rem;
-    font-weight: 600;
-}
-
-/* Estilo para as seções de conteúdo principal */
-.main-content {
-    background-color: var(--white-color);
-    padding: 25px;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilo para grupos de entrada */
-.input-group {
-    margin-bottom: 20px;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    font-size: 1rem;
-}
-
-.input-group input {
-    width: 100%;
-    padding: 12px 15px;
-    box-sizing: border-box;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-}
-
-.input-group input:focus {
-    border-color: var(--primary-color);
-    outline: none;
-}
-
-/* Estilo para botões */
-button {
-    padding: 12px 20px;
-    background-color: var(--primary-color);
-    color: var(--white-color);
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s, transform 0.2s;
-    width: 100%;
-    font-weight: 500;
-}
-
-button:hover {
-    background-color: var(--hover-color);
-    transform: translateY(-2px);
-}
-
-button:active {
-    transform: translateY(0);
-}
-
-/* Estilos para a tela de login */
-.login-body {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.login-container {
-    background-color: var(--white-color);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    text-align: left;
-    width: 340px;
-    opacity: 0.95; /* Ajuste para garantir opacidade */
-}
-
-.login-container h1 {
-    margin-bottom: 25px;
-    text-align: center;
-    font-size: 1.75rem;
-    font-weight: 600;
-}
-
-.login-form-group {
-    margin-bottom: 20px;
-}
-
-.login-form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 1rem;
-    font-weight: 500;
-}
-
-.login-form-group input {
-    width: 100%;
-    padding: 12px 15px;
-    box-sizing: border-box;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-    background-color: var(--white-color); /* Fundo sólido aos inputs */
-}
-
-.login-form-group input:focus {
-    border-color: var(--primary-color);
-    outline: none;
-}
-
-/* Estilos para o Dashboard */
-.dashboard-content {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.dashboard-item {
-    border: 1px solid var(--border-color);
-    padding: 20px;
-    border-radius: 8px;
-    background-color: var(--white-color);
-    flex: 1 1 45%;
-    min-width: 260px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-}
-
-.dashboard-item h2 {
-    margin-top: 0;
-    font-size: 1.25rem;
-    font-weight: 600;
-}
-
-.dashboard-item:hover {
-    transform: translateY(-5px);
-}
-
-/* Estilos para Configurações */
-#configuracao form {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 25px;
-    background-color: var(--white-color);
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-#configuracao label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    font-size: 1rem;
-}
-
-#configuracao input[type="text"],
-#configuracao input[type="email"],
-#configuracao input[type="number"] {
-    width: 100%;
-    padding: 12px 15px;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-}
-
-#configuracao input[type="text"]:focus,
-#configuracao input[type="email"]:focus,
-#configuracao input[type="number"]:focus {
-    border-color: var(--primary-color);
-    outline: none;
-}
-
-/* Estilos para o Relatório */
-#relatorio form {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 25px;
-    background-color: var(--white-color);
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-#relatorio label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    font-size: 1rem;
-}
-
-#relatorio input[type="date"],
-#relatorio select {
-    width: 100%;
-    padding: 12px 15px;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-}
-
-#relatorio input[type="date"]:focus,
-#relatorio select:focus {
-    border-color: var(--primary-color);
-    outline: none;
-}
-
-/* Estilos para tabelas */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 25px;
-    background-color: var(--white-color);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-table th,
-table td {
-    text-align: left;
-    padding: 12px 15px;
-    border-bottom: 1px solid var(--border-color);
-}
-
-table th {
-    background-color: var(--primary-color);
-    color: var(--white-color);
-}
-
-table tbody tr:hover {
-    background-color: var(--background-color);
-}
-
-table tbody tr:last-child td {
-    border-bottom: none;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Cabeçalho da página */
+/* Header da página */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #ffffff;
+    background-color: var(--white-color);
     padding: 20px;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #ddd;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .header h1 {
     margin: 0;
-    font-size: 36px;
+    font-size: 1.75rem;
+    font-weight: 600;
     text-transform: uppercase;
     color: #0056b3;
 }
 
+/* Filtros na header */
 .filter-options {
     display: flex;
     gap: 20px;
 }
 
-.client-filter {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.client-filter label {
-    font-weight: bold;
-}
-
-.client-filter select {
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-}
-
+.client-filter,
 .date-filter {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
+.client-filter label,
 .date-filter label {
     font-weight: bold;
 }
 
+.client-filter select,
 .date-filter input[type="date"] {
     padding: 5px;
     border-radius: 5px;
@@ -462,254 +344,229 @@ table tbody tr:last-child td {
     background-color: #004494;
 }
 
-/* Cartões de Informações */
-.card-container {
+/* --- Cartões de Resumo --- */
+.summary-cards {
     display: flex;
-    justify-content: space-between;
     gap: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
 }
 
 .card {
-    flex: 1;
-    background-color: #0056b3;
-    color: white;
+    flex: 1 1 250px;
+    background-color: var(--white-color);
+    border-radius: 12px;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(21, 168, 231, 0.15);
     text-align: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 6px 16px rgba(21, 168, 231, 0.3);
 }
 
 .card h2 {
-    font-size: 18px;
+    font-size: 1.4rem;
+    color: #15A8E7;
     margin-bottom: 15px;
 }
 
 .card p {
-    font-size: 36px;
-    font-weight: bold;
-    margin: 0;
-}
-
-/* Gráficos */
-.charts-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.chart {
-    flex: 1;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-
-
-
-/* Estilo para a tabela de pagamentos */
-.payment-table table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.payment-table th, .payment-table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-}
-
-.payment-table th {
-    background-color: #f4f4f4;
-}
-
-
-
-
-
-
-/* Estilo para a tabela de empréstimos */
-.loan-table table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.loan-table th, .loan-table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-}
-
-.loan-table th {
-    background-color: #f4f4f4;
-}
-
-
-
-
-
-
-/* Estilo para a tabela de fiado */
-.fiado-table table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.fiado-table th, .fiado-table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-}
-
-.fiado-table th {
-    background-color: #f4f4f4;
-}
-
-/* Estilos para o modal de cadastro de cliente */
-.modal {
-    display: none; /* Esconde o modal por padrão */
-    position: fixed; /* Fixa o modal na tela */
-    z-index: 1000; /* Coloca o modal na frente de outros elementos */
-    left: 0;
-    top: 0;
-    width: 100%; /* Modal ocupa 100% da largura da tela */
-    height: 100%; /* Modal ocupa 100% da altura da tela */
-    overflow: auto; /* Adiciona barra de rolagem se necessário */
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo escurecido */
-    display: flex;
-    justify-content: right;
-    align-items: center;
-}
-
-.modal-content {
-    background-color: var(--white-color);
-    padding: 100px;
-    border-radius: 8px; /* Arredondar cantos do modal */
-    width: 85%; /* Largura do modal ajustável */
-    max-width: 3000px; /* Largura máxima do modal */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    position: relative;
-    box-sizing: border-box; /* Inclui padding e bordas no cálculo da largura */
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: var(--text-color);
-    font-size: 1.5rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.close:hover {
-    color: var(--primary-color);
-}
-
-.modal-content h2 {
-    margin-top: 0;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 600;
-    text-align: center;
-    margin-bottom: 20px;
+    color: #2C3E50;
 }
 
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Colunas flexíveis para os campos */
-    gap: 15px; /* Espaçamento entre os campos */
+/* --- Tabela de Dados --- */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--white-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(21, 168, 231, 0.1);
 }
 
-.input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 5px; /* Espaçamento entre o label e o input */
-}
-
-.input-group label {
-    font-size: 1rem;
-    font-weight: 500;
-}
-
-.input-group input[type="text"],
-.input-group input[type="date"],
-.input-group select {
-    padding: 12px 15px;
-    font-size: 1rem;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    box-sizing: border-box;
-    transition: border-color 0.3s;
-}
-
-.input-group input:focus,
-.input-group select:focus {
-    border-color: var(--primary-color);
-    outline: none;
-}
-
-button[type="submit"] {
-    padding: 12px 20px;
-    background-color: var(--primary-color);
+.data-table thead {
+    background-color: #15A8E7;
     color: var(--white-color);
+    font-weight: 700;
+}
+
+.data-table th,
+.data-table td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle;
+}
+
+.data-table tbody tr:hover {
+    background-color: #f1f9ff;
+}
+
+.data-table tbody tr:nth-child(even) {
+    background-color: #f9fbfc;
+}
+
+/* Botões na tabela */
+.btn-action {
+    padding: 7px 12px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--white-color);
+    transition: background-color 0.3s ease;
+}
+
+.btn-edit {
+    background-color: #28a745;
+}
+
+.btn-edit:hover {
+    background-color: #218838;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
+/* --- Formulários --- */
+.form-container {
+    background-color: var(--white-color);
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(21, 168, 231, 0.15);
+    max-width: 500px;
+    margin: 0 auto 40px;
+}
+
+.form-container h2 {
+    margin-bottom: 25px;
+    font-weight: 700;
+    color: #15A8E7;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2C3E50;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group select,
+.form-group textarea {
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px 8px;
     font-size: 1rem;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    grid-column: span 2; /* O botão ocupa a largura completa do grid */
+    color: var(--text-color);
+    resize: vertical;
+    transition: border-color 0.3s ease;
 }
 
-button[type="submit"]:hover {
-    background-color: var(--hover-color);
-    transform: translateY(-2px);
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #15A8E7;
+    outline: none;
 }
 
-button[type="submit"]:active {
-    transform: translateY(0);
+/* Botões nos formulários */
+.form-submit-btn {
+    padding: 12px 25px;
+    background-color: #15A8E7;
+    border: none;
+    border-radius: 8px;
+    color: var(--white-color);
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
 }
 
-/* Responsividade para dispositivos menores */
-@media (max-width: 768px) {
-    .modal-content {
-        width: 95%; /* Aumenta a largura do modal em dispositivos menores */
+.form-submit-btn:hover {
+    background-color: #1F618D;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 900px) {
+    .sidebar {
+        position: fixed;
+        width: 70px;
+        padding-top: 10px;
+        overflow-x: hidden;
     }
-    
-    .modal-content h2 {
-        font-size: 1.25rem;
-        margin-bottom: 15px;
+
+    .sidebar ul li a {
+        text-align: center;
+        padding: 12px 0;
+        font-size: 0;
     }
-    
-    button[type="submit"] {
-        padding: 10px 15px;
-        font-size: 0.9rem;
+
+    .sidebar ul li a::before {
+        content: attr(data-icon);
+        font-size: 22px;
+        display: block;
+        margin: 0 auto 6px;
+        color: var(--white-color);
+    }
+
+    .content {
+        margin-left: 70px;
+        width: calc(100% - 70px);
+    }
+
+    .header, .filter-options {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filter-options {
+        gap: 10px;
+    }
+
+    .summary-cards {
+        flex-direction: column;
     }
 }
 
 @media (max-width: 480px) {
-    .modal-content {
-        width: 100%; /* O modal ocupa toda a largura da tela em dispositivos muito pequenos */
-        padding: 10px;
+    .topbar, .top-bar {
+        left: 0;
+        padding: 10px 15px;
+        justify-content: center;
     }
-    
-    .modal-content h2 {
-        font-size: 1rem;
-        margin-bottom: 10px;
+
+    .sidebar {
+        display: none;
     }
-    
-    button[type="submit"] {
-        padding: 8px 12px;
-        font-size: 0.85rem;
+
+    .content {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px 15px;
+    }
+
+    button, button[type="submit"] {
+        width: 100%;
     }
 }
-
-
-
-
-
