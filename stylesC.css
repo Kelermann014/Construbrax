@@ -200,18 +200,9 @@ footer {
 }
 
 
+
 @media (max-width: 768px) {
-    .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-    }
-
-    .content {
-        margin-left: 0;
-        padding: 15px;
-    }
-
+    /* Ajustar topo */
     .top-bar {
         flex-direction: column;
         height: auto;
@@ -221,14 +212,41 @@ footer {
 
     .top-bar .logo-empresa,
     .top-bar .usuario-info {
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
         margin: 5px 0;
     }
 
-    .submenu a,
-    .dropdown-menu a {
+    /* Sidebar ocupa 100% da largura e vira menu acima */
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .sidebar ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .submenu a {
         font-size: 16px;
-        padding: 10px 15px;
+        padding: 12px 15px;
+    }
+
+    .dropdown-menu a {
+        font-size: 14px;
+        padding-left: 30px;
+    }
+
+    /* Conteúdo ocupa a tela toda */
+    .content {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    footer {
+        font-size: 14px;
+        text-align: center;
     }
 }
-
