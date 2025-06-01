@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONSTRUBRAX - Empréstimo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header class="top-bar">
+        <div class="logo-empresa">
+            <img src="home.png" alt="Logo CONSTRUBRAX">
+            <span class="nome-empresa">CONSTRUBRAX</span>
+        </div>
+        <div class="usuario-info">
+            <span id="user-name">KELERMANN</span>
+            <button id="home-button"><i class="fas fa-home"></i></button>
+            <button id="settings-button"><i class="fas fa-cog"></i></button>
+            <button id="logoff-button"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+    </header>
+    <nav class="sidebar">
+        <!-- Menu lateral já incluído em TelaInicial.html -->
+    </nav>
+    <main class="content">
+        <h1>Empréstimo</h1>
+        <div id="loan-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeLoanModal()">&times;</span>
+                <h2>Gerar Empréstimo</h2>
+                <form id="loan-form">
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="client-id">Cliente:</label>
+                            <div class="input-with-button">
+                                <input type="text" id="client-id" placeholder="Selecione o Cliente" readonly>
+                                <button type="button" onclick="showClientModal()">Pesquisar Cliente</button>
+                                <button type="button" onclick="openRegisterClient()">Cadastrar Cliente</button>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="guarantor-id">Fiador:</label>
+                            <div class="input-with-button">
+                                <input type="text" id="guarantor-id" placeholder="Selecione o Fiador" readonly>
+                                <button type="button" onclick="showGuarantorModal()">Pesquisar Fiador</button>
+                                <button type="button" onclick="openRegisterGuarantor()">Cadastrar Fiador</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="loan-amount">Valor do Empréstimo:</label>
+                            <input type="text" id="loan-amount" placeholder="R$" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="installments">Número de Parcelas:</label>
+                            <input type="text" id="installments" placeholder="Número de vezes" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="interest-rate">Juros Aplicados (%):</label>
+                            <input type="text" id="interest-rate" placeholder="%" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="start-date">Data de Início:</label>
+                            <input type="date" id="start-date" required>
+                        </div>
+                    </div>
+                    <h3>Resumo do Empréstimo</h3>
+                    <div id="summary-content">
+                        <!-- Resumo será preenchido dinamicamente -->
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" onclick="generateContract()">Gerar Contrato</button>
+                        <button type="button" onclick="printContract()">Imprimir Contrato</button>
+                        <button type="button" onclick="saveAndSend()">Salvar e Enviar por E-mail</button>
+                    </div>
+                    <footer>
+                        <button type="submit">Salvar Empréstimo</button>
+                        <button type="button" onclick="closeLoanModal()">Cancelar</button>
+                    </footer>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>© 2025 IKATECH. Todos os direitos reservados.</p>
+    </footer>
+    <script src="scripts.js"></script>
+    <script>
+        function closeLoanModal() { document.getElementById('loan-modal').style.display = 'none'; }
+        function showClientModal() { alert('Funcionalidade de pesquisa de cliente não implementada.'); }
+        function openRegisterClient() { alert('Funcionalidade de cadastro de cliente não implementada.'); }
+        function showGuarantorModal() { alert('Funcionalidade de pesquisa de fiador não implementada.'); }
+        function openRegisterGuarantor() { alert('Funcionalidade de cadastro de fiador não implementada.'); }
+        function generateContract() { alert('Contrato gerado (simulação).'); }
+        function printContract() { alert('Impressão do contrato (simulação).'); }
+        function saveAndSend() { alert('Empréstimo salvo e enviado por e-mail (simulação).'); }
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONSTRUBRAX - Clientes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header class="top-bar">
+        <div class="logo-empresa">
+            <img src="home.png" alt="Logo CONSTRUBRAX">
+            <span class="nome-empresa">CONSTRUBRAX</span>
+        </div>
+        <div class="usuario-info">
+            <span id="user-name">KELERMANN</span>
+            <button id="home-button"><i class="fas fa-home"></i></button>
+            <button id="settings-button"><i class="fas fa-cog"></i></button>
+            <button id="logoff-button"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+    </header>
+    <nav class="sidebar">
+        <!-- Menu lateral já incluído em TelaInicial.html -->
+    </nav>
+    <main class="content">
+        <h1>Clientes</h1>
+        <div id="client-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>Cadastrar Cliente</h2>
+                <form id="client-form">
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="nome">Nome:</label>
+                            <input type="text" id="nome" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="cpf">CPF:</label>
+                            <input type="text" id="cpf" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="rg">RG:</label>
+                            <input type="text" id="rg" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="data-nascimento">Data de Nascimento:</label>
+                            <input type="date" id="data-nascimento" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="sexo">Sexo:</label>
+                            <select id="sexo" required>
+                                <option value="M">Masculino</option>
+                                <option value="F">Feminino</option>
+                                <option value="O">Outro</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="estado-civil">Estado Civil:</label>
+                            <select id="estado-civil" required>
+                                <option value="solteiro">Solteiro</option>
+                                <option value="casado">Casado</option>
+                                <option value="divorciado">Divorciado</option>
+                                <option value="viúvo">Viúvo</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="endereco">Endereço:</label>
+                            <input type="text" id="endereco" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="numero">Número:</label>
+                            <input type="text" id="numero" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="bairro">Bairro:</label>
+                            <input type="text" id="bairro" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="cidade">Cidade:</label>
+                            <input type="text" id="cidade" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="estado">Estado:</label>
+                            <input type="text" id="estado" required>
+                        </div>
+                    </div>
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>© 2025 IKATECH. Todos os direitos reservados.</p>
+    </footer>
+    <script src="scripts.js"></script>
+    <script>
+        function closeModal() { document.getElementById('client-modal').style.display = 'none'; }
+    </script>
+</body>
+</html>

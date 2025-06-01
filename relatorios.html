@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONSTRUBRAX - Relatórios</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header class="top-bar">
+        <div class="logo-empresa">
+            <img src="home.png" alt="Logo CONSTRUBRAX">
+            <span class="nome-empresa">CONSTRUBRAX</span>
+        </div>
+        <div class="usuario-info">
+            <span id="user-name">KELERMANN</span>
+            <button id="home-button"><i class="fas fa-home"></i></button>
+            <button id="settings-button"><i class="fas fa-cog"></i></button>
+            <button id="logoff-button"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+    </header>
+    <nav class="sidebar">
+        <!-- Menu lateral já incluído em TelaInicial.html -->
+    </nav>
+    <main class="content">
+        <h1>Relatórios</h1>
+        <form>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="start-date">Data de Início</label>
+                    <input type="date" id="start-date" required>
+                </div>
+                <div class="input-group">
+                    <label for="end-date">Data de Fim</label>
+                    <input type="date" id="end-date" required>
+                </div>
+                <div class="input-group">
+                    <label for="category">Categoria</label>
+                    <select id="category" required>
+                        <option value="vendas">Vendas</option>
+                        <option value="clientes">Clientes</option>
+                        <option value="produtos">Produtos</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit">Gerar Relatório</button>
+        </form>
+        <h2>Resultados do Relatório</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Data</th>
+                <th>Valor</th>
+            </tr>
+            <tr>
+                <td>001</td>
+                <td>Cliente A</td>
+                <td>01/08/2024</td>
+                <td>R$ 320,00</td>
+            </tr>
+            <tr>
+                <td>002</td>
+                <td>Cliente B</td>
+                <td>02/08/2024</td>
+                <td>R$ 150,00</td>
+            </tr>
+        </table>
+    </main>
+    <footer>
+        <p>© 2025 IKATECH. Todos os direitos reservados.</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>

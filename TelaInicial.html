@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONSTRUBRAX - Tela Inicial</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header class="top-bar">
+        <div class="logo-empresa">
+            <img src="home.png" alt="Logo CONSTRUBRAX">
+            <span class="nome-empresa">CONSTRUBRAX</span>
+        </div>
+        <div class="usuario-info">
+            <span id="user-name">KELERMANN</span>
+            <button id="home-button"><i class="fas fa-home"></i></button>
+            <button id="settings-button"><i class="fas fa-cog"></i></button>
+            <button id="logoff-button"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+    </header>
+    <nav class="sidebar">
+        <ul>
+            <li class="submenu">
+                <a href="#" class="dropdown-toggle"><span class="menu-text"><i class="fas fa-tachometer-alt"></i> Dashboard</span><i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="dashboard.html">Overview</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Users</a></li>
+                </ul>
+            </li>
+            <li class="submenu">
+                <a href="#" class="dropdown-toggle"><span class="menu-text"><i class="fas fa-tools"></i> Controle de Obras</span><i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Nova Obra</a></li>
+                    <li><a href="#">Histórico</a></li>
+                </ul>
+            </li>
+            <li class="submenu">
+                <a href="#" class="dropdown-toggle"><span class="menu-text"><i class="fas fa-money-bill-wave"></i> Recebimentos</span><i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="clientes.html">Cadastrar Cliente</a></li>
+                    <li><a href="#">Lista de Clientes</a></li>
+                </ul>
+            </li>
+            <li class="submenu">
+                <a href="#" class="dropdown-toggle"><span class="menu-text"><i class="fas fa-chart-line"></i> Relatórios</span><i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="relatorios.html">Relatórios Diários</a></li>
+                    <li><a href="#">Relatórios Mensais</a></li>
+                </ul>
+            </li>
+            <li class="submenu">
+                <a href="#" class="dropdown-toggle"><span class="menu-text"><i class="fas fa-file-invoice-dollar"></i> Faturamento</span><i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Novo Faturamento</a></li>
+                    <li><a href="#">Histórico</a></li>
+                </ul>
+            </li>
+            <li class="submenu">
+                <a href="#" class="dropdown-toggle"><span class="menu-text"><i class="fas fa-warehouse"></i> Estoque</span><i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Adicionar Item</a></li>
+                    <li><a href="#">Inventário</a></li>
+                </ul>
+            </li>
+            <li class="submenu">
+                <a href="#" class="dropdown-toggle"><span class="menu-text"><i class="fas fa-cog"></i> Configurações</span><i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="configuracoes.html">Perfil</a></li>
+                    <li><a href="senha.html">Segurança</a></li>
+                    <li><a href="#">Preferências</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <main class="content">
+        <div class="welcome-section">
+            <h1>CONSTRUBRAX</h1>
+            <p>Seja bem-vindo, <span id="user-name-welcome">KELERMANN</span></p>
+        </div>
+        <div class="nav-menu">
+            <div class="nav-item">
+                <a href="dashboard.html">Dashboard</a>
+                <ul>
+                    <li><a href="dashboard.html">Overview</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Users</a></li>
+                </ul>
+            </div>
+            <div class="nav-item">
+                <a href="#">Controle de Obras</a>
+                <ul>
+                    <li><a href="#">Nova Obra</a></li>
+                    <li><a href="#">Histórico</a></li>
+                </ul>
+            </div>
+            <div class="nav-item">
+                <a href="#">Recebimentos</a>
+                <ul>
+                    <li><a href="clientes.html">Cadastrar Cliente</a></li>
+                    <li><a href="#">Lista de Clientes</a></li>
+                </ul>
+            </div>
+            <div class="nav-item">
+                <a href="relatorios.html">Relatórios</a>
+                <ul>
+                    <li><a href="relatorios.html">Relatórios Diários</a></li>
+                    <li><a href="#">Relatórios Mensais</a></li>
+                </ul>
+            </div>
+            <div class="nav-item">
+                <a href="#">Faturamento</a>
+                <ul>
+                    <li><a href="#">Novo Faturamento</a></li>
+                    <li><a href="#">Histórico</a></li>
+                </ul>
+            </div>
+            <div class="nav-item">
+                <a href="#">Estoque</a>
+                <ul>
+                    <li><a href="#">Adicionar Item</a></li>
+                    <li><a href="#">Inventário</a></li>
+                </ul>
+            </div>
+            <div class="nav-item">
+                <a href="configuracoes.html">Configurações</a>
+                <ul>
+                    <li><a href="configuracoes.html">Perfil</a></li>
+                    <li><a href="senha.html">Segurança</a></li>
+                    <li><a href="#">Preferências</a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>© 2025 IKATECH. Todos os direitos reservados.</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
