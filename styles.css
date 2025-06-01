@@ -32,7 +32,7 @@ html, body {
 /* --- Tela de Login --- */
 body.login-body, /* corpo com background imagem no login */
 body {
-    background-image: url('construction-background.JPG'); /* imagem fundo login */
+    background-image: url('construction-background.jpg'); /* imagem fundo login */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
