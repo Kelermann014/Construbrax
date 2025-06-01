@@ -198,3 +198,37 @@ footer {
     margin-top: auto;
     position: relative;
 }
+
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .top-bar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .top-bar .logo-empresa,
+    .top-bar .usuario-info {
+        justify-content: center;
+        margin: 5px 0;
+    }
+
+    .submenu a,
+    .dropdown-menu a {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+}
+
