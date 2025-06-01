@@ -1,17 +1,23 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
+  inicializarLogin();
+  inicializarLogoff();
+  inicializarSubmenus();
+  inicializarMenuHamburguer();
+});
+
+// === LOGIN ===
+function inicializarLogin() {
   const loginForm = document.getElementById('login-form');
   const usernameInput = document.getElementById('username');
 
-  // Converte entrada para maiúsculas
   if (usernameInput) {
-    usernameInput.addEventListener('input', function () {
-      this.value = this.value.toUpperCase();
+    usernameInput.addEventListener('input', () => {
+      usernameInput.value = usernameInput.value.toUpperCase();
     });
   }
 
-  // Lógica de login
   if (loginForm) {
-    loginForm.addEventListener('submit', function (event) {
+    loginForm.addEventListener('submit', (event) => {
       event.preventDefault();
 
       const username = document.getElementById('username').value.trim();
@@ -26,4 +32,48 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
-});
+}
+
+// === LOGOFF ===
+function inicializarLogoff() {
+  const logoffBtn = document.getElementById("logoff-button");
+  if (logoffBtn) {
+    logoffBtn.addEventListener("click", () => {
+      localStorage.removeItem("usuarioLogado");
+      window.location.href = "index.html";
+    });
+  }
+}
+
+// === SUBMENUS ===
+function inicializarSubmenus() {
+  document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      const parentLi = toggle.parentElement;
+      const dropdownMenu = parentLi.querySelector('.dropdown-menu');
+      const isActive = parentLi.classList.toggle("active");
+
+      if (dropdownMenu) {
+        dropdownMenu.style.maxHeight = isActive ? dropdownMenu.scrollHeight + "px" : "0";
+      }
+
+      const chevron = toggle.querySelector('.fa-chevron-down');
+      if (chevron) {
+        chevron.style.transform = isActive ? "rotate(180deg)" : "rotate(0deg)";
+      }
+    });
+  });
+}
+
+// === MENU LATERAL ===
+function inicializarMenuHamburguer() {
+  const toggleBtn = document.getElementById("menu-toggle");
+  const sidebar = document.querySelector(".sidebar");
+
+  if (toggleBtn && sidebar) {
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("active");
+    });
+  }
+}
