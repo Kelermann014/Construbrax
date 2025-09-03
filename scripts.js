@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const logoffButton = document.getElementById("logoff-button");
     if (logoffButton) {
         logoffButton.addEventListener("click", function() {
-            window.location.href = "login.html";
+            window.location.href = "index.html";
         });
     }
 
