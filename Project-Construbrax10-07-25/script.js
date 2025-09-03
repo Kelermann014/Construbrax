@@ -103,4 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- INICIALIZAÇÃO DA
+    // --- INICIALIZAÇÃO DA PÁGINA ---
+    atualizarInterfaceCompleta();
+});
