@@ -138,13 +138,28 @@
                 <div class="form-group span-2"><input type="text" id="rgCliente" placeholder="RG" data-mascara="rg" maxlength="12" /><div class="mensagem-erro" id="erro-rgCliente"></div></div>
                 <div class="form-group span-2"><input type="text" id="telefoneCliente" placeholder="Telefone" data-mascara="telefone" maxlength="15" /><div class="mensagem-erro" id="erro-telefoneCliente"></div></div>
                 <div class="form-group span-2"><input type="text" id="profissaoCliente" placeholder="Profissão" /><div class="mensagem-erro" id="erro-profissaoCliente"></div></div>
-                <div class="form-group span-1"><input type="text" id="cepCliente" placeholder="CEP" data-mascara="cep" maxlength="9" /><div class="mensagem-erro" id="erro-cepCliente"></div></div>
-                <div class="form-group span-3"><input type="text" id="ruaCliente" placeholder="Rua" /><div class="mensagem-erro" id="erro-ruaCliente"></div></div>
-                <div class="form-group span-1"><input type="text" id="numeroCliente" placeholder="Número" /><div class="mensagem-erro" id="erro-numeroCliente"></div></div>
-                <div class="form-group span-3"><input type="text" id="bairroCliente" placeholder="Bairro" /><div class="mensagem-erro" id="erro-bairroCliente"></div></div>
-                <div class="form-group span-2"><input type="text" id="cidadeCliente" placeholder="Cidade" /><div class="mensagem-erro" id="erro-cidadeCliente"></div></div>
-                <div class="form-group span-2"><input type="text" id="estadoCliente" placeholder="Estado" maxlength="2" /><div class="mensagem-erro" id="erro-estadoCliente"></div></div>
-                <div class="form-group span-4"><input type="text" id="complementoCliente" placeholder="Complemento" /><div class="mensagem-erro" id="erro-complementoCliente"></div></div>
+                
+                <h4 class="span-4" style="margin: 10px 0;">Dados do Cônjuge (se houver)</h4>
+                <div class="form-group span-2"><input type="text" id="nomeConjugeCliente" placeholder="Nome do Cônjuge" /><div class="mensagem-erro" id="erro-nomeConjugeCliente"></div></div>
+                <div class="form-group span-2"><input type="text" id="cpfConjugeCliente" placeholder="CPF do Cônjuge" data-mascara="cpf" maxlength="14" /><div class="mensagem-erro" id="erro-cpfConjugeCliente"></div></div>
+                
+                <h4 class="span-4" style="margin: 10px 0;">Endereço de Moradia</h4>
+                <div class="form-group span-1"><input type="text" id="cepMoradiaCliente" placeholder="CEP" data-mascara="cep" maxlength="9" /><div class="mensagem-erro" id="erro-cepMoradiaCliente"></div></div>
+                <div class="form-group campo-largo"><input type="text" id="ruaMoradiaCliente" placeholder="Rua" /><div class="mensagem-erro" id="erro-ruaMoradiaCliente"></div></div>
+                <div class="form-group span-1"><input type="text" id="numeroMoradiaCliente" placeholder="Número" /><div class="mensagem-erro" id="erro-numeroMoradiaCliente"></div></div>
+                <div class="form-group span-3"><input type="text" id="bairroMoradiaCliente" placeholder="Bairro" /><div class="mensagem-erro" id="erro-bairroMoradiaCliente"></div></div>
+                <div class="form-group span-2"><input type="text" id="cidadeMoradiaCliente" placeholder="Cidade" /><div class="mensagem-erro" id="erro-cidadeMoradiaCliente"></div></div>
+                <div class="form-group span-2"><input type="text" id="estadoMoradiaCliente" placeholder="Estado" maxlength="2" /><div class="mensagem-erro" id="erro-estadoMoradiaCliente"></div></div>
+                <div class="form-group span-4"><input type="text" id="complementoMoradiaCliente" placeholder="Complemento" /><div class="mensagem-erro" id="erro-complementoMoradiaCliente"></div></div>
+                
+                <h4 class="span-4" style="margin: 10px 0;">Endereço do Imóvel</h4>
+                <div class="form-group span-1"><input type="text" id="cepImovelCliente" placeholder="CEP" data-mascara="cep" maxlength="9" /><div class="mensagem-erro" id="erro-cepImovelCliente"></div></div>
+                <div class="form-group campo-largo"><input type="text" id="ruaImovelCliente" placeholder="Rua" /><div class="mensagem-erro" id="erro-ruaImovelCliente"></div></div>
+                <div class="form-group span-1"><input type="text" id="numeroImovelCliente" placeholder="Número" /><div class="mensagem-erro" id="erro-numeroImovelCliente"></div></div>
+                <div class="form-group span-3"><input type="text" id="bairroImovelCliente" placeholder="Bairro" /><div class="mensagem-erro" id="erro-bairroImovelCliente"></div></div>
+                <div class="form-group span-2"><input type="text" id="cidadeImovelCliente" placeholder="Cidade" /><div class="mensagem-erro" id="erro-cidadeImovelCliente"></div></div>
+                <div class="form-group span-2"><input type="text" id="estadoImovelCliente" placeholder="Estado" maxlength="2" /><div class="mensagem-erro" id="erro-estadoImovelCliente"></div></div>
+                <div class="form-group span-4"><input type="text" id="complementoImovelCliente" placeholder="Complemento" /><div class="mensagem-erro" id="erro-complementoImovelCliente"></div></div>
             </div>
             <button id="btn-salvar-cliente">Salvar</button>
         </div>
@@ -161,12 +176,16 @@
                 <div class="form-group span-2"><input type="text" id="rgFiador" placeholder="RG" data-mascara="rg" maxlength="12"/><div class="mensagem-erro" id="erro-rgFiador"></div></div>
                 <div class="form-group span-4"><input type="text" id="telefoneFiador" placeholder="Telefone" data-mascara="telefone" maxlength="15"/><div class="mensagem-erro" id="erro-telefoneFiador"></div></div>
                 <div class="form-group span-1"><input type="text" id="cepFiador" placeholder="CEP" data-mascara="cep" maxlength="9"/><div class="mensagem-erro" id="erro-cepFiador"></div></div>
-                <div class="form-group span-3"><input type="text" id="ruaFiador" placeholder="Rua"/><div class="mensagem-erro" id="erro-ruaFiador"></div></div>
+                <div class="form-group campo-largo"><input type="text" id="ruaFiador" placeholder="Rua"/><div class="mensagem-erro" id="erro-ruaFiador"></div></div>
                 <div class="form-group span-1"><input type="text" id="numeroFiador" placeholder="Número"/><div class="mensagem-erro" id="erro-numeroFiador"></div></div>
                 <div class="form-group span-3"><input type="text" id="bairroFiador" placeholder="Bairro"/><div class="mensagem-erro" id="erro-bairroFiador"></div></div>
                 <div class="form-group span-2"><input type="text" id="cidadeFiador" placeholder="Cidade"/><div class="mensagem-erro" id="erro-cidadeFiador"></div></div>
                 <div class="form-group span-2"><input type="text" id="estadoFiador" placeholder="Estado" maxlength="2"/><div class="mensagem-erro" id="erro-estadoFiador"></div></div>
                 <div class="form-group span-4"><input type="text" id="complementoFiador" placeholder="Complemento" /><div class="mensagem-erro" id="erro-complementoFiador"></div></div>
+
+                <h4 class="span-4" style="margin: 10px 0;">Dados do Cônjuge (se houver)</h4>
+                <div class="form-group span-2"><input type="text" id="nomeConjugeFiador" placeholder="Nome do Cônjuge" /><div class="mensagem-erro" id="erro-nomeConjugeFiador"></div></div>
+                <div class="form-group span-2"><input type="text" id="cpfConjugeFiador" placeholder="CPF do Cônjuge" data-mascara="cpf" maxlength="14" /><div class="mensagem-erro" id="erro-cpfConjugeFiador"></div></div>
             </div>
             <button id="btn-salvar-fiador">Salvar Fiador</button>
         </div>
@@ -196,17 +215,32 @@
                     <label for="clienteSimulacao">Cliente:</label>
                     <select id="clienteSimulacao"></select>
                 </div>
-                <div class="form-group span-2">
-                    <div class="label-com-botao">
-                        <label for="fiadorSimulacao">Fiador:</label>
-                        <button id="btn-abrir-cadastro-fiador-simulacao" class="btn-link">Novo Fiador</button>
-                    </div>
-                    <select id="fiadorSimulacao"></select>
+                <div class="form-group span-1">
+                    <label for="fiador1Simulacao">1º Fiador:</label>
+                    <select id="fiador1Simulacao"></select>
                 </div>
+                <div class="form-group span-1">
+                    <label for="fiador2Simulacao">2º Fiador:</label>
+                    <select id="fiador2Simulacao"></select>
+                </div>
+
+                <h4 class="span-4" style="margin: 10px 0;">Detalhes do Empréstimo</h4>
                 <div class="form-group span-1"><label for="valorEmprestimo">Valor do Empréstimo</label><input type="number" id="valorEmprestimo" placeholder="R$ 0,00" /></div>
                 <div class="form-group span-1"><label for="jurosEmprestimo">Juros (% a.m.)</label><input type="number" id="jurosEmprestimo" placeholder="Ex: 3.5" step="0.01" min="0" /></div>
                 <div class="form-group span-1"><label for="parcelasEmprestimo">Nº de Parcelas</label><input type="number" id="parcelasEmprestimo" placeholder="Ex: 12" /></div>
                 <div class="form-group span-1"><label for="vencimentoEmprestimo">1º Vencimento</label><input type="date" id="vencimentoEmprestimo" /></div>
+                
+                <h4 class="span-4" style="margin: 10px 0;">Entrada (opcional)</h4>
+                <div class="form-group span-2">
+                    <div class="label-com-botao">
+                        <label>Veículo (Entrada)</label>
+                        <button id="btn-abrir-cadastro-veiculo" class="btn-link">Cadastrar Veículo</button>
+                    </div>
+                    <input type="text" id="veiculoPlacaEntrada" placeholder="Placa do Veículo" />
+                </div>
+                <div class="form-group span-1"><input type="number" id="valorVeiculoEntrada" placeholder="Valor do Veículo" /></div>
+                <div class="form-group span-1"><input type="text" id="documentosVeiculo" placeholder="Docs. (ipva, licenciamento, etc)" /></div>
+
                 <div class="span-4"><label for="resultadoSimulacao">Resultado da Simulação:</label><textarea id="resultadoSimulacao" readonly></textarea></div>
             </div>
             <div class="botoes-simulacao"><button id="btn-simular">Simular</button><button id="btn-realizar-emprestimo">Realizar Empréstimo</button></div>
@@ -234,6 +268,21 @@
         </div>
     </div>
     
+    <div id="modalCadastroVeiculo" class="modal">
+        <div class="modal-content" style="max-width: 600px;">
+            <span class="close" data-modal-id="modalCadastroVeiculo">&times;</span>
+            <h3>Cadastro de Veículo</h3>
+            <div class="form-grid">
+                <div class="form-group span-2"><input type="text" id="placaVeiculo" placeholder="Placa" /><div class="mensagem-erro" id="erro-placaVeiculo"></div></div>
+                <div class="form-group span-2"><input type="text" id="marcaVeiculo" placeholder="Marca" /><div class="mensagem-erro" id="erro-marcaVeiculo"></div></div>
+                <div class="form-group span-2"><input type="text" id="modeloVeiculo" placeholder="Modelo" /><div class="mensagem-erro" id="erro-modeloVeiculo"></div></div>
+                <div class="form-group span-2"><input type="text" id="anoVeiculo" placeholder="Ano" /><div class="mensagem-erro" id="erro-anoVeiculo"></div></div>
+                <div class="form-group span-4"><textarea id="documentosVeiculo" placeholder="Documentos do veículo (IPVA, Licenciamento, etc.)"></textarea></div>
+            </div>
+            <button id="btn-salvar-veiculo">Salvar Veículo</button>
+        </div>
+    </div>
+
     <div id="modalEmDesenvolvimento" class="modal">
         <div class="modal-content" style="max-width: 500px; text-align: center;">
             <span class="close" data-modal-id="modalEmDesenvolvimento">&times;</span>
