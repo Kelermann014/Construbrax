@@ -16,13 +16,34 @@ function abrirModalParaEditarCliente(clienteId) {
     document.getElementById('rgCliente').value = cliente.rg;
     document.getElementById('telefoneCliente').value = cliente.telefone;
     document.getElementById('profissaoCliente').value = cliente.profissao;
-    document.getElementById('cepCliente').value = cliente.cep;
-    document.getElementById('ruaCliente').value = cliente.rua;
-    document.getElementById('numeroCliente').value = cliente.numero;
-    document.getElementById('bairroCliente').value = cliente.bairro;
-    document.getElementById('cidadeCliente').value = cliente.cidade;
-    document.getElementById('estadoCliente').value = cliente.estado;
-    document.getElementById('complementoCliente').value = cliente.complemento;
+    
+    // Coniuge
+    if (cliente.conjuge) {
+        document.getElementById('nomeConjugeCliente').value = cliente.conjuge.nome;
+        document.getElementById('cpfConjugeCliente').value = cliente.conjuge.cpf;
+    }
+
+    // Endereco moradia
+    if (cliente.enderecoMoradia) {
+        document.getElementById('cepMoradiaCliente').value = cliente.enderecoMoradia.cep;
+        document.getElementById('ruaMoradiaCliente').value = cliente.enderecoMoradia.rua;
+        document.getElementById('numeroMoradiaCliente').value = cliente.enderecoMoradia.numero;
+        document.getElementById('bairroMoradiaCliente').value = cliente.enderecoMoradia.bairro;
+        document.getElementById('cidadeMoradiaCliente').value = cliente.enderecoMoradia.cidade;
+        document.getElementById('estadoMoradiaCliente').value = cliente.enderecoMoradia.estado;
+        document.getElementById('complementoMoradiaCliente').value = cliente.enderecoMoradia.complemento;
+    }
+
+    // Endereco imovel
+    if (cliente.enderecoImovel) {
+        document.getElementById('cepImovelCliente').value = cliente.enderecoImovel.cep;
+        document.getElementById('ruaImovelCliente').value = cliente.enderecoImovel.rua;
+        document.getElementById('numeroImovelCliente').value = cliente.enderecoImovel.numero;
+        document.getElementById('bairroImovelCliente').value = cliente.enderecoImovel.bairro;
+        document.getElementById('cidadeImovelCliente').value = cliente.enderecoImovel.cidade;
+        document.getElementById('estadoImovelCliente').value = cliente.enderecoImovel.estado;
+        document.getElementById('complementoImovelCliente').value = cliente.enderecoImovel.complemento;
+    }
     abrirModal('modalCadastroCliente');
 }
 
@@ -49,13 +70,28 @@ function cadastrarNovoCliente() {
         rg: document.getElementById('rgCliente').value.trim(),
         telefone: document.getElementById('telefoneCliente').value.trim(),
         profissao: document.getElementById('profissaoCliente').value.trim(),
-        cep: document.getElementById('cepCliente').value.trim(),
-        rua: document.getElementById('ruaCliente').value.trim(),
-        numero: document.getElementById('numeroCliente').value.trim(),
-        bairro: document.getElementById('bairroCliente').value.trim(),
-        cidade: document.getElementById('cidadeCliente').value.trim(),
-        estado: document.getElementById('estadoCliente').value.trim(),
-        complemento: document.getElementById('complementoCliente').value.trim()
+        conjuge: {
+            nome: document.getElementById('nomeConjugeCliente').value.trim(),
+            cpf: document.getElementById('cpfConjugeCliente').value.trim()
+        },
+        enderecoMoradia: {
+            cep: document.getElementById('cepMoradiaCliente').value.trim(),
+            rua: document.getElementById('ruaMoradiaCliente').value.trim(),
+            numero: document.getElementById('numeroMoradiaCliente').value.trim(),
+            bairro: document.getElementById('bairroMoradiaCliente').value.trim(),
+            cidade: document.getElementById('cidadeMoradiaCliente').value.trim(),
+            estado: document.getElementById('estadoMoradiaCliente').value.trim(),
+            complemento: document.getElementById('complementoMoradiaCliente').value.trim()
+        },
+        enderecoImovel: {
+            cep: document.getElementById('cepImovelCliente').value.trim(),
+            rua: document.getElementById('ruaImovelCliente').value.trim(),
+            numero: document.getElementById('numeroImovelCliente').value.trim(),
+            bairro: document.getElementById('bairroImovelCliente').value.trim(),
+            cidade: document.getElementById('cidadeImovelCliente').value.trim(),
+            estado: document.getElementById('estadoImovelCliente').value.trim(),
+            complemento: document.getElementById('complementoImovelCliente').value.trim()
+        }
     };
     clientes.push(novoCliente);
     mostrarNotificacao('Cliente cadastrado com sucesso!', 'sucesso');
@@ -73,13 +109,28 @@ function editarCliente(idCliente) {
         rg: document.getElementById('rgCliente').value.trim(),
         telefone: document.getElementById('telefoneCliente').value.trim(),
         profissao: document.getElementById('profissaoCliente').value.trim(),
-        cep: document.getElementById('cepCliente').value.trim(),
-        rua: document.getElementById('ruaCliente').value.trim(),
-        numero: document.getElementById('numeroCliente').value.trim(),
-        bairro: document.getElementById('bairroCliente').value.trim(),
-        cidade: document.getElementById('cidadeCliente').value.trim(),
-        estado: document.getElementById('estadoCliente').value.trim(),
-        complemento: document.getElementById('complementoCliente').value.trim()
+        conjuge: {
+            nome: document.getElementById('nomeConjugeCliente').value.trim(),
+            cpf: document.getElementById('cpfConjugeCliente').value.trim()
+        },
+        enderecoMoradia: {
+            cep: document.getElementById('cepMoradiaCliente').value.trim(),
+            rua: document.getElementById('ruaMoradiaCliente').value.trim(),
+            numero: document.getElementById('numeroMoradiaCliente').value.trim(),
+            bairro: document.getElementById('bairroMoradiaCliente').value.trim(),
+            cidade: document.getElementById('cidadeMoradiaCliente').value.trim(),
+            estado: document.getElementById('estadoMoradiaCliente').value.trim(),
+            complemento: document.getElementById('complementoMoradiaCliente').value.trim()
+        },
+        enderecoImovel: {
+            cep: document.getElementById('cepImovelCliente').value.trim(),
+            rua: document.getElementById('ruaImovelCliente').value.trim(),
+            numero: document.getElementById('numeroImovelCliente').value.trim(),
+            bairro: document.getElementById('bairroImovelCliente').value.trim(),
+            cidade: document.getElementById('cidadeImovelCliente').value.trim(),
+            estado: document.getElementById('estadoImovelCliente').value.trim(),
+            complemento: document.getElementById('complementoImovelCliente').value.trim()
+        }
     };
     clientes[clienteIndex] = clienteAtualizado;
     emprestimos.forEach(emp => { if (emp.cliente.id === idCliente) emp.cliente = clienteAtualizado; });
@@ -107,6 +158,9 @@ function limparCamposCadastroCliente() {
     });
     form.querySelectorAll('.mensagem-erro').forEach(div => div.textContent = '');
 
-    const cepCliente = document.getElementById('cepCliente');
-    cepCliente.addEventListener('blur', () => buscarEnderecoPorCep(cepCliente.value, 'cliente'), { once: true });
+    const cepMoradiaCliente = document.getElementById('cepMoradiaCliente');
+    cepMoradiaCliente.addEventListener('blur', () => buscarEnderecoPorCep(cepMoradiaCliente.value, 'cliente-moradia'), { once: true });
+    
+    const cepImovelCliente = document.getElementById('cepImovelCliente');
+    cepImovelCliente.addEventListener('blur', () => buscarEnderecoPorCep(cepImovelCliente.value, 'cliente-imovel'), { once: true });
 }
