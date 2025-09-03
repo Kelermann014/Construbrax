@@ -1,0 +1,413 @@
+/* Reset básico e Variáveis Globais */
+:root {
+  --cor-primaria: #0052cc;
+  --cor-primaria-hover: #0041a3;
+  --cor-secundaria: #0066ff;
+  --cor-texto-branco: #ffffff;
+  --cor-fundo: #f9fafb;
+  --cor-texto-padrao: #333;
+  --cor-borda: #ccc;
+  --cor-perigo: #dc3545;
+  --sombra-card: 0 4px 15px rgb(0 0 0 / 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto-padrao);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.top-menu {
+  background-color: var(--cor-primaria);
+  padding: 15px 25px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.top-menu button {
+  background-color: var(--cor-secundaria);
+  border: none;
+  color: var(--cor-texto-branco);
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.top-menu button:hover {
+  background-color: var(--cor-primaria-hover);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 30px auto 60px;
+  padding: 0 20px;
+}
+
+h2 {
+  text-align: center;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 25px;
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.filtros .filtro-btn {
+  background-color: #e9ecef;
+  border: 1px solid #ced4da;
+  padding: 9px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #495057;
+}
+
+.filtros .filtro-btn.ativo,
+.filtros .filtro-btn:hover {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-texto-branco);
+  border-color: var(--cor-secundaria);
+}
+
+.filtros input {
+    padding: 9px 14px;
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    font-size: 1rem;
+    flex: 1 1 280px;
+}
+
+.cards-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  padding: 25px 20px;
+  text-align: center;
+}
+
+.card h3 {
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #495057;
+  font-size: 1.1rem;
+}
+
+.card p {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--cor-primaria);
+  margin: 0;
+}
+
+.graficos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 30px;
+  height: 480px;
+  margin: 0 auto 40px;
+}
+
+.graficos-grid > div {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  border: 1px solid #e9ecef;
+  display: flex;
+  flex-direction: column;
+}
+
+.graficos-grid > div:first-child { flex: 1 1 30%; max-width: 350px; }
+.graficos-grid > div:last-child { flex: 1 1 65%; }
+
+.tabela-principal {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border: 1px solid #e9ecef;
+}
+.tabela-principal thead tr {
+    background-color: var(--cor-primaria);
+    color: #FFFFFF;
+}
+.tabela-principal th, .tabela-principal td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #dee2e6;
+    text-align: left;
+    vertical-align: middle;
+}
+.tabela-principal tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.botoes-acao {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+.botoes-acao button {
+  background-color: #6c757d;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.botoes-acao button:hover { background-color: #5a6268; }
+.botoes-acao button.btn-excluir { background-color: var(--cor-perigo); }
+.botoes-acao button.btn-excluir:hover { background-color: #c82333; }
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1100;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  overflow-y: auto;
+  padding: 40px 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content, .modal-content-largo {
+  background-color: #ffffff;
+  margin: auto;
+  padding: 30px 35px;
+  border-radius: 8px;
+  width: 90%;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+  position: relative;
+  border: 1px solid #dee2e6;
+}
+.modal-content { max-width: 800px; }
+.modal-content-largo { max-width: 900px; }
+
+.modal h3 {
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: #333;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    margin-bottom: 25px;
+}
+.form-grid .span-2 { grid-column: span 2; }
+.form-grid .span-4 { grid-column: span 4; }
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+.form-group label {
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #495057;
+}
+
+.modal input, .modal select, .modal textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 6px;
+  border: 1px solid #ced4da;
+  font-size: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+}
+.modal input:focus, .modal select:focus, .modal textarea:focus {
+    border-color: var(--cor-secundaria);
+    outline: none;
+}
+
+.fiador-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.fiador-controls select { flex-grow: 1; }
+.fiador-controls button {
+    white-space: nowrap;
+    width: auto; /* Largura automática para o botão "Novo Fiador" */
+    flex-shrink: 0;
+}
+
+.botoes-simulacao {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin: 10px 0;
+}
+
+/* Botões do modal - REGRA ATUALIZADA E CENTRALIZADA */
+.modal-content > button,
+.modal-content-largo > button,
+.botoes-simulacao button,
+.fiador-controls button {
+  background-color: var(--cor-secundaria);
+  border: none;
+  color: var(--cor-texto-branco);
+  font-weight: 600;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+}
+
+.modal-content > button:hover,
+.modal-content-largo > button:hover,
+.botoes-simulacao button:hover,
+.fiador-controls button:hover {
+  background-color: var(--cor-primaria-hover);
+}
+
+.close {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #6c757d;
+  cursor: pointer;
+  line-height: 1;
+}
+.close:hover { color: #000; }
+
+.mensagem-erro { color: var(--cor-perigo); font-size: 0.8rem; font-weight: 500; margin-top: 4px; height: 1em; }
+.campo-valido { border-color: #28a745 !important; }
+.campo-invalido { border-color: var(--cor-perigo) !important; }
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px 30px;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+.details-grid-item strong { display: block; font-size: 0.9rem; color: #555; margin-bottom: 2px; }
+.details-grid-item span { font-size: 1.1rem; }
+.tabela-rolavel { max-height: 300px; overflow-y: auto; border: 1px solid #eee; border-radius: 8px; }
+.tabela-rolavel table { margin-bottom: 0; box-shadow: none; }
+
+
+
+/* Correção no CSS para o Modal de Gerenciar Fiadores */
+
+#modalGerenciarFiadores table {
+    table-layout: fixed; /* Força as larguras das colunas a serem respeitadas */
+    width: 100%;
+}
+
+#modalGerenciarFiadores th:nth-child(1), 
+#modalGerenciarFiadores td:nth-child(1) {
+    width: 45%; /* Coluna Nome */
+}
+
+#modalGerenciarFiadores th:nth-child(2), 
+#modalGerenciarFiadores td:nth-child(2) {
+    width: 25%; /* Coluna CPF */
+}
+
+#modalGerenciarFiadores th:nth-child(3), 
+#modalGerenciarFiadores td:nth-child(3) {
+    width: 20%; /* Coluna Telefone */
+}
+
+#modalGerenciarFiadores th:nth-child(4), 
+#modalGerenciarFiadores td:nth-child(4) {
+    width: 130px; /* Largura fixa para os botões */
+    text-align: center;
+}
+
+#modalGerenciarFiadores .botoes-acao {
+    justify-content: center;
+}
+
+
+
+/* Correção no CSS para o botão Novo Fiador */
+
+.label-com-botao {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+}
+
+.btn-link {
+    background: none;
+    border: none;
+    color: var(--cor-secundaria);
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.85rem;
+    padding: 0;
+    font-weight: 600;
+}
+
+.btn-link:hover {
+    color: var(--cor-primaria-hover);
+}
+
+/* Estilo para o botão Pagar dentro da tabela do modal */
+.btn-pagar {
+    background-color: #28a745; /* Verde sucesso */
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-pagar:hover {
+    background-color: #218838; /* Verde mais escuro */
+}

@@ -1,0 +1,111 @@
+/* Reset de margens e preenchimentos padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos globais */
+body.login-body {
+    background-image: url('construction-background.jpg'); /* Caminho para a imagem de fundo */
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container do Login */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Caixa de Login */
+.login-box {
+    background: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 350px;
+    width: 90%;
+}
+
+/* Contêiner para a logo e o título */
+.logo-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.logo {
+    margin-right: 15px;
+}
+
+.logo img {
+    max-width: 50px;
+}
+
+.login-box h2 {
+    font-size: 24px;
+    color: #2C3E50; /* Azul principal */
+}
+
+/* Mensagem de erro */
+#error-message {
+    margin-bottom: 15px;
+}
+
+/* Contêiner dos campos de entrada */
+.input-container {
+    position: relative;
+    margin: 10px 0;
+}
+
+.input-container i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #15A8E7; /* Azul principal */
+}
+
+.input-container input {
+    width: 100%;
+    padding: 10px 12px 10px 40px;
+    border: 1px solid #BDC3C7; /* Borda cinza claro */
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    color: #2C3E50; /* Texto cinza escuro */
+}
+
+.input-container input:focus {
+    border-color: #15A8E7; /* Azul principal ao focar */
+}
+
+/* Botão de login */
+#login-form button {
+    width: 50%;
+    padding: 10px;
+    background-color: #15A8E7; /* Azul principal */
+    color: #FFFFFF; /* Texto branco */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+#login-form button:hover {
+    background-color: #1F618D; /* Azul mais escuro ao passar o mouse */
+}

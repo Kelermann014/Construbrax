@@ -1,0 +1,559 @@
+/* =================================================================== */
+/* ARQUIVO DE ESTILO UNIFICADO - CONSTRUBRAX                             */
+/* =================================================================== */
+
+/* ================================== */
+/* PARTE 1: ESTILOS GERAIS E DO LOGIN */
+/* ================================== */
+
+/* Reset de margens e preenchimentos padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: "Arial", sans-serif;
+    background-color: #FBFBFB;
+    line-height: 1.6;
+    color: #2C3E50;
+    display: flex;
+    flex-direction: column;
+}
+
+body.login-body {
+    background-image: url('construction-background.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 380px;
+    width: 90%;
+}
+
+.logo-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    gap: 15px;
+}
+
+.login-box .logo img {
+    max-width: 50px;
+}
+
+.login-box h2 {
+    font-size: 24px;
+    color: #2C3E50;
+}
+
+.input-container {
+    position: relative;
+    margin: 15px 0;
+}
+
+.input-container i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #15A8E7;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border: 1px solid #BDC3C7;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #2C3E50;
+}
+.input-container input:focus {
+    border-color: #15A8E7;
+    outline: none;
+}
+
+#login-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #15A8E7;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+#login-form button:hover {
+    background-color: #1F618D;
+}
+
+
+/* ================================== */
+/* PARTE 2: LAYOUT PRINCIPAL (SHELL)  */
+/* ================================== */
+
+.top-bar {
+    background: linear-gradient(90deg, #2C3E50, #15A8E7);
+    color: #FFFFFF;
+    padding: 0 20px;
+    border-bottom: 3px solid #96D7EF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+}
+
+.top-bar .logo-empresa {
+    display: flex;
+    align-items: center;
+}
+
+.top-bar .logo-empresa img {
+    height: 60px;
+    margin-right: 15px;
+}
+
+.top-bar .logo-empresa .nome-empresa {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.top-bar .usuario-info {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.top-bar .usuario-info span {
+    font-weight: bold;
+    margin-right: 12px;
+}
+
+.usuario-info button {
+    background: none;
+    border: none;
+    margin: 0 7px;
+    padding: 0;
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+.usuario-info i {
+    font-size: 22px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    background-color: #2C3E50;
+    color: #FBFBFB;
+    box-shadow: 10px 0 15px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    height: calc(100vh - 70px);
+    width: 280px;
+    z-index: 1000;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    border-bottom: 1px solid #34495E;
+}
+
+.submenu > a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #FBFBFB;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.submenu > a:hover,
+.submenu.active > a {
+    background-color: #15A8E7;
+}
+
+.menu-text i {
+    margin-right: 15px;
+    width: 20px;
+    text-align: center;
+}
+
+.submenu i.fas.fa-chevron-down {
+    margin-left: 15px;
+    transition: transform 0.3s ease;
+}
+
+.submenu.active > a i.fas.fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    display: none;
+    padding-left: 20px;
+    background-color: #34495E;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.submenu.active .dropdown-menu {
+    display: block;
+    max-height: 500px;
+}
+
+.dropdown-menu li {
+    border-bottom: 1px solid #2C3E50;
+}
+
+.dropdown-menu a {
+    display: flex;
+    align-items: center;
+    padding: 12px 25px;
+    text-decoration: none;
+    color: #FBFBFB;
+    font-size: 0.9rem;
+}
+
+.dropdown-menu a:hover, .dropdown-menu a.active {
+    background-color: #1F618D;
+}
+
+.content {
+    margin-top: 70px;
+    margin-left: 280px;
+    padding: 30px;
+    width: calc(100% - 280px);
+    background-color: #F8F9FA;
+    flex: 1;
+}
+
+/* =================================================================== */
+/* PARTE 3: ESTILOS DO MÓDULO DE GESTÃO DE EMPRÉSTIMOS                 */
+/* =================================================================== */
+
+:root {
+  --cor-perigo: #dc3545;
+}
+
+.content h2 {
+    text-align: center;
+    font-weight: 700;
+    color: #2C3E50;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.botoes-topo {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    justify-content: center;
+}
+
+.botoes-topo button {
+    background-color: #15A8E7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.botoes-topo button:hover {
+    background-color: #1F618D;
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 25px;
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.filtros .filtro-btn {
+  background-color: #e9ecef;
+  border: 1px solid #ced4da;
+  padding: 9px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #495057;
+}
+
+.filtros .filtro-btn.ativo,
+.filtros .filtro-btn:hover {
+  background-color: #15A8E7;
+  color: #FFFFFF;
+  border-color: #15A8E7;
+}
+
+.cards-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  padding: 25px 20px;
+  text-align: center;
+}
+
+.card h3 {
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #495057;
+  font-size: 1.1rem;
+}
+
+.card p {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2C3E50;
+  margin: 0;
+}
+
+.graficos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 30px;
+  height: 480px;
+  margin: 0 auto 40px;
+}
+
+.graficos-grid > div {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  border: 1px solid #e9ecef;
+  display: flex;
+  flex-direction: column;
+}
+
+.graficos-grid > div:first-child { flex: 1 1 30%; max-width: 350px; }
+.graficos-grid > div:last-child { flex: 1 1 65%; }
+
+.tabela-principal {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border: 1px solid #e9ecef;
+}
+.tabela-principal thead tr {
+    background-color: #2C3E50;
+    color: #FFFFFF;
+}
+.tabela-principal th, .tabela-principal td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #dee2e6;
+    text-align: left;
+    vertical-align: middle;
+}
+.tabela-principal tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.botoes-acao {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.botoes-acao button {
+  background-color: #6c757d;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.botoes-acao button:hover { background-color: #5a6268; }
+.botoes-acao button.btn-excluir { background-color: var(--cor-perigo); }
+.botoes-acao button.btn-excluir:hover { background-color: #c82333; }
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1100;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  overflow-y: auto;
+  padding: 40px 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content, .modal-content-largo {
+  background-color: #ffffff;
+  margin: auto;
+  padding: 30px 35px;
+  border-radius: 8px;
+  width: 90%;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+  position: relative;
+  border: 1px solid #dee2e6;
+}
+.modal-content { max-width: 800px; }
+.modal-content-largo { max-width: 900px; }
+
+.modal h3 {
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: #2C3E50;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 20px;
+    margin-bottom: 25px;
+}
+.form-grid .span-2 { grid-column: span 2; }
+.form-grid .span-3 { grid-column: span 3; }
+.form-grid .span-4 { grid-column: span 4; }
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+.form-group label {
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #495057;
+}
+
+.modal input, .modal select, .modal textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 6px;
+  border: 1px solid #ced4da;
+  font-size: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+}
+.modal input:focus, .modal select:focus, .modal textarea:focus {
+    border-color: #15A8E7;
+    outline: none;
+}
+
+.fiador-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.fiador-controls select { flex-grow: 1; }
+.fiador-controls button {
+    white-space: nowrap; 
+    padding: 12px 15px;
+    font-size: 0.9rem; 
+    flex-shrink: 0;
+}
+
+.botoes-simulacao {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin: 10px 0;
+}
+.botoes-simulacao button, .modal-content > button, .modal-content-largo > button {
+    width: 100%;
+}
+
+
+/* Rodapé */
+footer {
+    background: linear-gradient(90deg, #2c3e50, #15a8e7);
+    color: #fff;
+    padding: 5px 10px;
+    border-top: 1px solid #96d7ef;
+    text-align: center;
+    margin-top: auto;
+}
+
+
+.close {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #6c757d;
+  cursor: pointer;
+  line-height: 1;
+}
+.close:hover { color: #000; }
+
+.mensagem-erro { color: var(--cor-perigo); font-size: 0.8rem; font-weight: 500; margin-top: 4px; height: 1em; }
+.campo-valido { border-color: #28a745 !important; }
+.campo-invalido { border-color: var(--cor-perigo) !important; }
+
+/* Responsividade */
+@media (max-width: 992px) {
+  .graficos-grid { height: auto; }
+  .graficos-grid > div { flex-basis: 100%; max-width: 100%; height: 320px; }
+}
+@media (max-width: 768px) {
+    .content, .sidebar { margin-left: 0; width: 100%; }
+    .sidebar { position: relative; height: auto; width: 100%; top: 0; }
+    .top-bar { position: relative; }
+    .form-grid { grid-template-columns: repeat(2, 1fr); }
+    .form-grid .span-3, .form-grid .span-4 { grid-column: span 2; }
+}
+@media (max-width: 600px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .form-grid .span-2, .form-grid .span-3, .form-grid .span-4 { grid-column: span 1; }
+}
