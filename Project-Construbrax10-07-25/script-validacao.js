@@ -84,10 +84,6 @@ function validarCampo(inputElement) {
             if (inputElement.value.trim() === '') mensagem = 'Este campo é obrigatório.';
             else ehValido = true;
             break;
-        case 'placaVeiculo':
-            if (inputElement.value.trim().length < 7) mensagem = 'A placa deve ter 7 caracteres.';
-            else ehValido = true;
-            break;
         default:
             ehValido = true;
             break;
