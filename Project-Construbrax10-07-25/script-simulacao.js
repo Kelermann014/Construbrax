@@ -3,9 +3,7 @@ function simularEmprestimo() {
     const valor = parseFloat(document.getElementById('valorEmprestimo').value);
     const juros = parseFloat(document.getElementById('jurosEmprestimo').value);
     const parcelas = parseInt(document.getElementById('parcelasEmprestimo').value);
-    const veiculoId = document.getElementById('veiculoEntrada').value;
-    const veiculo = veiculos.find(v => v.id === parseInt(veiculoId));
-    const valorEntradaVeiculo = veiculo ? 15000 : 0; // Valor simulado do veículo
+    const valorEntradaVeiculo = parseFloat(document.getElementById('valorVeiculoEntrada').value) || 0;
     const valorAposEntrada = valor - valorEntradaVeiculo;
 
     if (isNaN(valor) || isNaN(juros) || isNaN(parcelas) || valor <= 0 || parcelas <= 0) {
@@ -29,12 +27,8 @@ function realizarEmprestimo() {
     const vencimento = document.getElementById('vencimentoEmprestimo').value;
     
     // Novas validações
-    if (!clienteId) {
-        mostrarNotificacao('Selecione um cliente para o empréstimo.', 'erro');
-        return;
-    }
-    if (!fiador1Id && !fiador2Id) {
-        mostrarNotificacao('Selecione pelo menos um fiador para o empréstimo.', 'erro');
+    if (!clienteId || !fiador1Id) {
+        mostrarNotificacao('Selecione um cliente e pelo menos um fiador para o empréstimo.', 'erro');
         return;
     }
     if (fiador1Id && fiador2Id && fiador1Id === fiador2Id) {
@@ -52,9 +46,7 @@ function realizarEmprestimo() {
     if(fiador2Id) fiadoresSelecionados.push(fiadores.find(f => f.id === fiador2Id));
 
     const taxa = juros / 100;
-    const veiculoId = document.getElementById('veiculoEntrada').value;
-    const veiculo = veiculos.find(v => v.id === parseInt(veiculoId));
-    const valorEntradaVeiculo = veiculo ? 15000 : 0;
+    const valorEntradaVeiculo = parseFloat(document.getElementById('valorVeiculoEntrada').value) || 0;
     const valorAposEntrada = valor - valorEntradaVeiculo;
     const parcelaValor = valorAposEntrada * (taxa * Math.pow(1 + taxa, parcelas)) / (Math.pow(1 + taxa, parcelas) - 1);
     
@@ -76,7 +68,7 @@ function realizarEmprestimo() {
         parcelasDetalhadas, 
         status: 'A vencer', 
         dataContrato: new Date(),
-        entradaVeiculo: veiculo
+        entradaVeiculo: veiculos.find(v => v.placa === document.getElementById('veiculoPlacaEntrada').value)
     };
     emprestimos.push(novoEmprestimo);
     mostrarNotificacao('Empréstimo realizado com sucesso!', 'sucesso');
@@ -94,7 +86,6 @@ function limparCamposSimulacao() {
     document.getElementById('clienteSimulacao').selectedIndex = 0;
     document.getElementById('fiador1Simulacao').selectedIndex = 0;
     document.getElementById('fiador2Simulacao').selectedIndex = 0;
-    document.getElementById('veiculoEntrada').selectedIndex = 0;
+    document.getElementById('veiculoPlacaEntrada').value = '';
     document.getElementById('valorVeiculoEntrada').value = '';
-    document.getElementById('documentosVeiculo').value = '';
 }
