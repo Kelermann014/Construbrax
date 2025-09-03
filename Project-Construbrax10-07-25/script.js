@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         atualizarSelectClientes();
         atualizarSelectFiadores();
+        atualizarSelectVeiculos();
     };
 
     // --- CONEXÃO DE EVENTOS ---
@@ -64,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btn-gerenciar-fiadores').addEventListener('click', abrirModalGerenciarFiadores);
     document.getElementById('btn-abrir-simulacao').addEventListener('click', () => abrirModal('modalSimulacao'));
     document.getElementById('btn-salvar-cliente').addEventListener('click', salvarCliente);
+    document.getElementById('btn-abrir-novo-fiador-simulacao').addEventListener('click', () => abrirModalParaNovoFiador(true));
     document.getElementById('btn-abrir-cadastro-veiculo').addEventListener('click', abrirModalCadastroVeiculo);
     document.getElementById('btn-salvar-fiador').addEventListener('click', salvarFiador);
     document.getElementById('btn-simular').addEventListener('click', simularEmprestimo);
