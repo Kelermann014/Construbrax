@@ -243,15 +243,37 @@ function atualizarSelectFiadores() {
     }
 }
 
-function atualizarSelectVeiculos() {
-    const selectVeiculos = document.getElementById('veiculoEntrada');
-    if(!selectVeiculos) return;
-    const valorAtual = selectVeiculos.value;
-    const veiculosDisponiveis = veiculos.filter(v => !emprestimos.some(emp => emp.entradaVeiculo && emp.entradaVeiculo.id === v.id));
+function abrirModalCadastroVeiculo() {
+    limparCamposCadastroVeiculo();
+    abrirModal('modalCadastroVeiculo');
+}
+
+function salvarVeiculo() {
+    // Simulação de salvamento, por enquanto sem validação completa
+    const placa = document.getElementById('placaVeiculo').value.trim();
+    if(placa.length < 7) {
+        mostrarNotificacao('A placa do veículo deve ter 7 caracteres.', 'erro');
+        return;
+    }
     
-    selectVeiculos.innerHTML = '<option value="">Selecione um veículo</option>' + 
-        [...veiculosDisponiveis].map(veiculo => 
-            `<option value="${veiculo.id}">${veiculo.placa} - ${veiculo.modelo}</option>`
-        ).join('');
-    selectVeiculos.value = valorAtual;
+    const novoVeiculo = {
+        id: proximoVeiculoId++,
+        placa: placa,
+        marca: document.getElementById('marcaVeiculo').value.trim(),
+        modelo: document.getElementById('modeloVeiculo').value.trim(),
+        ano: document.getElementById('anoVeiculo').value.trim(),
+        documentos: document.getElementById('documentosVeiculo').value.trim(),
+    };
+    veiculos.push(novoVeiculo);
+    mostrarNotificacao('Veículo cadastrado com sucesso!', 'sucesso');
+    fecharModal('modalCadastroVeiculo');
+    limparCamposCadastroVeiculo();
+}
+
+function limparCamposCadastroVeiculo() {
+    document.getElementById('placaVeiculo').value = '';
+    document.getElementById('marcaVeiculo').value = '';
+    document.getElementById('modeloVeiculo').value = '';
+    document.getElementById('anoVeiculo').value = '';
+    document.getElementById('documentosVeiculo').value = '';
 }
