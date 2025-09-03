@@ -32,7 +32,7 @@ function calcularStatusEmprestimo(emprestimo) {
 function atualizarCards(listaEmprestimos) {
     const clientesIds = new Set(listaEmprestimos.map(e => e.cliente.id));
     document.getElementById('totalClientes').textContent = clientesIds.size;
-    const cidades = new Set(listaEmprestimos.map(e => e.cliente.cidade).filter(c => c));
+    const cidades = new Set(listaEmprestimos.map(e => e.cliente.enderecoMoradia.cidade).filter(c => c));
     document.getElementById('totalCidades').textContent = cidades.size;
     document.getElementById('totalEmprestimos').textContent = listaEmprestimos.length;
     let totalReceber = 0;
@@ -222,15 +222,58 @@ function atualizarSelectClientes() {
 }
 
 function atualizarSelectFiadores() {
-    const select = document.getElementById('fiadorSimulacao');
-    if(!select) return;
-    const valorAtual = select.value;
-    select.innerHTML = '<option value="">Selecione um fiador</option>';
-    [...fiadores].sort((a, b) => a.nome.localeCompare(b.nome)).forEach(fiador => {
-        const option = document.createElement('option');
-        option.value = fiador.id;
-        option.textContent = `${fiador.nome} (CPF: ${fiador.cpf})`;
-        select.appendChild(option);
-    });
-    select.value = valorAtual;
+    const select1 = document.getElementById('fiador1Simulacao');
+    const select2 = document.getElementById('fiador2Simulacao');
+
+    const valorAtual1 = select1 ? select1.value : null;
+    const valorAtual2 = select2 ? select2.value : null;
+    
+    const optionsHtml = '<option value="">Selecione um fiador</option>' + 
+        [...fiadores].sort((a, b) => a.nome.localeCompare(b.nome)).map(fiador => 
+            `<option value="${fiador.id}">${fiador.nome} (CPF: ${fiador.cpf})</option>`
+        ).join('');
+        
+    if(select1) {
+        select1.innerHTML = optionsHtml;
+        select1.value = valorAtual1;
+    }
+    if(select2) {
+        select2.innerHTML = optionsHtml;
+        select2.value = valorAtual2;
+    }
+}
+
+function abrirModalCadastroVeiculo() {
+    limparCamposCadastroVeiculo();
+    abrirModal('modalCadastroVeiculo');
+}
+
+function salvarVeiculo() {
+    // Simulação de salvamento, por enquanto sem validação completa
+    const placa = document.getElementById('placaVeiculo').value.trim();
+    if(placa.length < 7) {
+        mostrarNotificacao('A placa do veículo deve ter 7 caracteres.', 'erro');
+        return;
+    }
+    
+    const novoVeiculo = {
+        id: proximoVeiculoId++,
+        placa: placa,
+        marca: document.getElementById('marcaVeiculo').value.trim(),
+        modelo: document.getElementById('modeloVeiculo').value.trim(),
+        ano: document.getElementById('anoVeiculo').value.trim(),
+        documentos: document.getElementById('documentosVeiculo').value.trim(),
+    };
+    veiculos.push(novoVeiculo);
+    mostrarNotificacao('Veículo cadastrado com sucesso!', 'sucesso');
+    fecharModal('modalCadastroVeiculo');
+    limparCamposCadastroVeiculo();
+}
+
+function limparCamposCadastroVeiculo() {
+    document.getElementById('placaVeiculo').value = '';
+    document.getElementById('marcaVeiculo').value = '';
+    document.getElementById('modeloVeiculo').value = '';
+    document.getElementById('anoVeiculo').value = '';
+    document.getElementById('documentosVeiculo').value = '';
 }
