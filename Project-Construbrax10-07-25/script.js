@@ -64,12 +64,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btn-gerenciar-fiadores').addEventListener('click', abrirModalGerenciarFiadores);
     document.getElementById('btn-abrir-simulacao').addEventListener('click', () => abrirModal('modalSimulacao'));
     document.getElementById('btn-salvar-cliente').addEventListener('click', salvarCliente);
-    document.getElementById('btn-abrir-cadastro-fiador-simulacao').addEventListener('click', () => abrirModalParaNovoFiador(true));
+    document.getElementById('btn-abrir-cadastro-veiculo').addEventListener('click', abrirModalCadastroVeiculo);
     document.getElementById('btn-salvar-fiador').addEventListener('click', salvarFiador);
     document.getElementById('btn-simular').addEventListener('click', simularEmprestimo);
     document.getElementById('btn-realizar-emprestimo').addEventListener('click', realizarEmprestimo);
     document.getElementById('btn-imprimir-contrato').addEventListener('click', imprimirContrato);
-    
+    document.getElementById('btn-salvar-veiculo').addEventListener('click', salvarVeiculo);
+
     document.querySelectorAll('.close').forEach(btn => btn.addEventListener('click', () => fecharModal(btn.dataset.modalId)));
     
     window.addEventListener('click', (event) => { if (event.target.classList.contains('modal')) fecharModal(event.target.id); });
@@ -89,6 +90,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if(input.placeholder) input.addEventListener('blur', () => validarCampo(input));
     });
 
-    // --- INICIALIZAÇÃO DA PÁGINA ---
-    atualizarInterfaceCompleta();
-});
+    // --- NOVO: Evento para preencher dados do veículo na simulação
+    document.getElementById('veiculoEntrada').addEventListener('change', (e) => {
+        const veiculoId = parseInt(e.target.value);
+        const veiculo = veiculos.find(v => v.id === veiculoId);
+        if (veiculo) {
+            document.getElementById('valorVeiculoEntrada').value = 15000; // Valor simulado
+            document.getElementById('documentosVeiculo').value = veiculo.documentos;
+        } else {
+            document.getElementById('valorVeiculoEntrada').value = '';
+            document.getElementById('documentosVeiculo').value = '';
+        }
+    });
+
+    // --- INICIALIZAÇÃO DA
