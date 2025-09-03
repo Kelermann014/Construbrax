@@ -13,11 +13,16 @@ function buscarEnderecoPorCep(cep, tipo) {
         .then(response => response.json())
         .then(data => {
             if (!data.erro) {
-                if (tipo === 'cliente') {
-                    document.getElementById('ruaCliente').value = data.logradouro;
-                    document.getElementById('bairroCliente').value = data.bairro;
-                    document.getElementById('cidadeCliente').value = data.localidade;
-                    document.getElementById('estadoCliente').value = data.uf;
+                if (tipo === 'cliente-moradia') {
+                    document.getElementById('ruaMoradiaCliente').value = data.logradouro;
+                    document.getElementById('bairroMoradiaCliente').value = data.bairro;
+                    document.getElementById('cidadeMoradiaCliente').value = data.localidade;
+                    document.getElementById('estadoMoradiaCliente').value = data.uf;
+                } else if (tipo === 'cliente-imovel') {
+                    document.getElementById('ruaImovelCliente').value = data.logradouro;
+                    document.getElementById('bairroImovelCliente').value = data.bairro;
+                    document.getElementById('cidadeImovelCliente').value = data.localidade;
+                    document.getElementById('estadoImovelCliente').value = data.uf;
                 } else if (tipo === 'fiador') {
                     document.getElementById('ruaFiador').value = data.logradouro;
                     document.getElementById('bairroFiador').value = data.bairro;
@@ -58,21 +63,24 @@ function validarCampo(inputElement) {
             if (inputElement.value.length < 14) mensagem = 'Telefone incompleto.';
             else ehValido = true;
             break;
-        case 'cepCliente':
+        case 'cepMoradiaCliente':
+        case 'cepImovelCliente':
         case 'cepFiador':
             if (inputElement.value.length < 9) mensagem = 'CEP incompleto.';
             else ehValido = true;
             break;
-        case 'ruaCliente':
+        case 'ruaMoradiaCliente':
+        case 'ruaImovelCliente':
         case 'ruaFiador':
-        case 'bairroCliente':
+        case 'bairroMoradiaCliente':
+        case 'bairroImovelCliente':
         case 'bairroFiador':
-        case 'cidadeCliente':
+        case 'cidadeMoradiaCliente':
+        case 'cidadeImovelCliente':
         case 'cidadeFiador':
-        case 'estadoCliente':
+        case 'estadoMoradiaCliente':
+        case 'estadoImovelCliente':
         case 'estadoFiador':
-        case 'numeroCliente':
-        case 'numeroFiador':
             if (inputElement.value.trim() === '') mensagem = 'Este campo é obrigatório.';
             else ehValido = true;
             break;
