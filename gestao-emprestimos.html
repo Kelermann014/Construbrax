@@ -233,13 +233,15 @@
                 <h4 class="span-4" style="margin: 10px 0;">Entrada (opcional)</h4>
                 <div class="form-group span-2">
                     <div class="label-com-botao">
-                        <label>Veículo (Entrada)</label>
+                        <label for="veiculoEntrada">Veículo (Entrada)</label>
                         <button id="btn-abrir-cadastro-veiculo" class="btn-link">Cadastrar Veículo</button>
                     </div>
-                    <input type="text" id="veiculoPlacaEntrada" placeholder="Placa do Veículo" />
+                    <select id="veiculoEntrada">
+                        <option value="">Selecione um veículo</option>
+                    </select>
                 </div>
-                <div class="form-group span-1"><input type="number" id="valorVeiculoEntrada" placeholder="Valor do Veículo" /></div>
-                <div class="form-group span-1"><input type="text" id="documentosVeiculo" placeholder="Docs. (ipva, licenciamento, etc)" /></div>
+                <div class="form-group span-1"><label for="valorVeiculoEntrada">Valor da Entrada</label><input type="number" id="valorVeiculoEntrada" placeholder="R$ 0,00" readonly /></div>
+                <div class="form-group span-1"><label for="documentosVeiculo">Docs. (ipva, licenciamento, etc)</label><input type="text" id="documentosVeiculo" placeholder="Docs." readonly/></div>
 
                 <div class="span-4"><label for="resultadoSimulacao">Resultado da Simulação:</label><textarea id="resultadoSimulacao" readonly></textarea></div>
             </div>
