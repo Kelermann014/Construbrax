@@ -43,13 +43,17 @@ function abrirModalParaEditarFiador(fiadorId) {
     document.getElementById('cpfFiador').value = fiador.cpf;
     document.getElementById('rgFiador').value = fiador.rg;
     document.getElementById('telefoneFiador').value = fiador.telefone;
-    document.getElementById('cepFiador').value = fiador.cep;
-    document.getElementById('ruaFiador').value = fiador.rua;
-    document.getElementById('numeroFiador').value = fiador.numero;
-    document.getElementById('bairroFiador').value = fiador.bairro;
-    document.getElementById('cidadeFiador').value = fiador.cidade;
-    document.getElementById('estadoFiador').value = fiador.estado;
-    document.getElementById('complementoFiador').value = fiador.complemento;
+    document.getElementById('cepFiador').value = fiador.endereco.cep;
+    document.getElementById('ruaFiador').value = fiador.endereco.rua;
+    document.getElementById('numeroFiador').value = fiador.endereco.numero;
+    document.getElementById('bairroFiador').value = fiador.endereco.bairro;
+    document.getElementById('cidadeFiador').value = fiador.endereco.cidade;
+    document.getElementById('estadoFiador').value = fiador.endereco.estado;
+    document.getElementById('complementoFiador').value = fiador.endereco.complemento;
+    if(fiador.conjuge) {
+        document.getElementById('nomeConjugeFiador').value = fiador.conjuge.nome;
+        document.getElementById('cpfConjugeFiador').value = fiador.conjuge.cpf;
+    }
     abrirModal('modalCadastroFiador');
 }
 
@@ -75,13 +79,19 @@ function cadastrarNovoFiador() {
     cpf,
     rg: document.getElementById('rgFiador').value.trim(),
     telefone: document.getElementById('telefoneFiador').value.trim(),
-    cep: document.getElementById('cepFiador').value.trim(),
-    rua: document.getElementById('ruaFiador').value.trim(),
-    numero: document.getElementById('numeroFiador').value.trim(),
-    bairro: document.getElementById('bairroFiador').value.trim(),
-    cidade: document.getElementById('cidadeFiador').value.trim(),
-    estado: document.getElementById('estadoFiador').value.trim(),
-    complemento: document.getElementById('complementoFiador').value.trim()
+    conjuge: {
+      nome: document.getElementById('nomeConjugeFiador').value.trim(),
+      cpf: document.getElementById('cpfConjugeFiador').value.trim()
+    },
+    endereco: {
+      cep: document.getElementById('cepFiador').value.trim(),
+      rua: document.getElementById('ruaFiador').value.trim(),
+      numero: document.getElementById('numeroFiador').value.trim(),
+      bairro: document.getElementById('bairroFiador').value.trim(),
+      cidade: document.getElementById('cidadeFiador').value.trim(),
+      estado: document.getElementById('estadoFiador').value.trim(),
+      complemento: document.getElementById('complementoFiador').value.trim()
+    }
   };
   fiadores.push(novoFiador);
   mostrarNotificacao('Fiador cadastrado com sucesso!', 'sucesso');
@@ -100,17 +110,27 @@ function editarFiador(fiadorId) {
         nome: document.getElementById('nomeFiador').value.trim(),
         cpf: document.getElementById('cpfFiador').value.trim(),
         telefone: document.getElementById('telefoneFiador').value.trim(),
-        rg: document.getElementById('rgFiador').value.trim(),
-        cep: document.getElementById('cepFiador').value.trim(),
-        rua: document.getElementById('ruaFiador').value.trim(),
-        numero: document.getElementById('numeroFiador').value.trim(),
-        bairro: document.getElementById('bairroFiador').value.trim(),
-        cidade: document.getElementById('cidadeFiador').value.trim(),
-        estado: document.getElementById('estadoFiador').value.trim(),
-        complemento: document.getElementById('complementoFiador').value.trim()
+        conjuge: {
+            nome: document.getElementById('nomeConjugeFiador').value.trim(),
+            cpf: document.getElementById('cpfConjugeFiador').value.trim()
+        },
+        endereco: {
+            cep: document.getElementById('cepFiador').value.trim(),
+            rua: document.getElementById('ruaFiador').value.trim(),
+            numero: document.getElementById('numeroFiador').value.trim(),
+            bairro: document.getElementById('bairroFiador').value.trim(),
+            cidade: document.getElementById('cidadeFiador').value.trim(),
+            estado: document.getElementById('estadoFiador').value.trim(),
+            complemento: document.getElementById('complementoFiador').value.trim()
+        }
     };
     fiadores[fiadorIndex] = fiadorAtualizado;
-    emprestimos.forEach(emp => { if(emp.fiador.id === fiadorId) emp.fiador = fiadorAtualizado; });
+    emprestimos.forEach(emp => {
+        if(emp.fiadores.some(f => f.id === fiadorId)) {
+            const index = emp.fiadores.findIndex(f => f.id === fiadorId);
+            emp.fiadores[index] = fiadorAtualizado;
+        }
+    });
     mostrarNotificacao('Fiador atualizado com sucesso!', 'sucesso');
     atualizarSelectFiadores();
     popularTabelaFiadores();
@@ -120,7 +140,7 @@ function editarFiador(fiadorId) {
 function excluirFiador(fiadorId) {
     const fiador = fiadores.find(f => f.id === fiadorId);
     if (!fiador) return;
-    const fiadorEmUso = emprestimos.some(emp => emp.fiador.id === fiadorId);
+    const fiadorEmUso = emprestimos.some(emp => emp.fiadores.some(f => f.id === fiadorId));
     if (fiadorEmUso) {
         mostrarNotificacao('Não é possível excluir. Este fiador está vinculado a um empréstimo.', 'erro');
         return;
